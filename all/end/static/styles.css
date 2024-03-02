@@ -1,0 +1,162 @@
+/* styles.css */
+
+.back-ground {
+    position: relative;
+    background-image: url('image1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-ground::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('image1.png');
+    /* Same as the background image */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(5px);
+    /* Add blur effect */
+    z-index: -1;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    /* Ensure the form is above the blurred background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Changed height to min-height */
+}
+
+.center {
+    text-align: center;
+}
+
+#textForm {
+    text-align: center;
+    border: 2px solid #007bff;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Adjust background color and opacity */
+}
+
+#textForm label {
+    font-size: 30px;
+}
+
+.speaker-photo img {
+    width: 90px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 30px;
+}
+
+input[type="button"] {
+    width: 200px;
+    padding: 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: background-color 0.3s;
+}
+
+input[type="button"]:hover {
+    background-color: #0056b3;
+}
+
+@media only screen and (max-width: 450px) and (orientation: portrait) {
+    .back-ground::before {
+        background-image: url("img1.png");
+        /* Adjusted image URL */
+    }
+    #textForm label {
+        font-size: 100px;
+    }
+    input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 100px;
+    }
+    .speaker-photo img {
+        width: 200px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    input[type="button"] {
+        width: 500px;
+        padding: 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 50px;
+        transition: background-color 0.3s;
+    }
+    h1 {
+        color: white;
+    }
+}
+
+
+/* sty.css */
+
+nav {
+    background-color: #007bff;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav-links li {
+    float: left;
+}
+
+.nav-links li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    background-color: #0056b3;
+}
+
+.active {
+    background-color: #0056b3;
+}

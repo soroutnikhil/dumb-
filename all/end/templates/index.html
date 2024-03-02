@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Robo Speaker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav>
+        <ul class="nav-links">
+            <li><a class="active" href="">Home</a></li>
+            <li><a class="active" href="">Instruction</a></li>
+        </ul>
+    </nav>
+
+    <div class="back-ground">
+        <div class="container">
+            <form id="textForm">
+                <h1>Text Speaker</h1>
+                <!-- Move speaker photo inside the form -->
+                <label for="userText">Enter What You Want To Speech:</label><br>
+                <input type="text" id="userText" name="userText" value=""><br>
+                <input type="button" value="Speak" onclick="speakText()">
+            </form>
+        </div>
+    </div>
+    <div class="center ">
+        <h1>Instruction</h1>
+        <h2>Drag and drop your files, or type, paste, and edit text here.</h2>
+        <h2>Natural Reader is a professional text-to-speech program that converts any written text into spoken words.</h2>
+    </div>
+
+    <script>
+        function speakText() {
+            var text = document.getElementById('userText').value;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    if (xhr.status == 200) {
+                        var utterance = new SpeechSynthesisUtterance(text);
+                        window.speechSynthesis.speak(utterance);
+                    } else {
+                        console.log('Error:', xhr.status);
+                    }
+                }
+            };
+            xhr.open('POST', '/speak');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('userText=' + encodeURIComponent(text));
+        }
+    </script>
+</body>
+
+</html>
